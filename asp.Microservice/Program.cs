@@ -1,4 +1,5 @@
 ﻿using asp.Microservice.Application;
+using asp.Microservice.Infrastructure;
 using asp.Microservice.Infrastructure.Config;
 using asp.Microservice.Infrastructure.Health;
 using asp.Microservice.Infrastructure.HostedServices;
@@ -26,6 +27,7 @@ public class Program
                 builder.Environment)
             .AddAutoMapper(
                 typeof(Program),
+                InfrastructureAssembly.Type(),
                 ApplicationAssembly.Type())
             .AddMediatR(
                 typeof(Program),
