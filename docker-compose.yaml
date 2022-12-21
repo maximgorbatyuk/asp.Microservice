@@ -14,7 +14,7 @@ services:
     environment:
       ASPNETCORE_URLS: "http://+:80"
       ASPNETCORE_ENVIRONMENT: "Development"
-      ConnectionStrings__Database: "User ID=postgres;Password=Str0ngPass!;Host=db;Port=5432;Database=database;Timeout=10;Pooling=true;"
+      ConnectionStrings__Database: "User ID=postgres;Password=Str0ngPass!;Host=db;Port=5435;Database=service;Timeout=10;Pooling=true;"
     ports:
       - "5131:80"
     networks:
@@ -29,7 +29,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: Str0ngPass!
-      POSTGRES_DB: database
+      POSTGRES_DB: service
       POSTGRES_ADMIN_PASSWORD: Str0ngPass!
     ports:
       - "5435:5432"
