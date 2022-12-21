@@ -1,19 +1,55 @@
+using asp.Microservice.Application;
+using asp.Microservice.Infrastructure.Config;
+using asp.Microservice.Infrastructure.Health;
+using asp.Microservice.Infrastructure.HostedServices;
+using asp.Microservice.Infrastructure.Middlewares;
+using asp.Microservice.Infrastructure.Validation;
+using MediatR;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services
+    .AddRouting(options => options.LowercaseUrls = true)
+    .AddEndpointsApiExplorer()
+    .AddHttpContextAccessor()
+    .AddDatabaseContext(
+        builder.Configuration,
+        builder.Environment)
+    .AddAutoMapper(
+        typeof(Program),
+        ApplicationAssembly.Type())
+    .AddMediatR(
+        typeof(Program),
+        ApplicationAssembly.Type())
+    .AddCqrsValidation()
+    .AddHostedService<AppInitializeService>()
+    .AddEndpointsApiExplorer()
+    .SetUpFluentValidation(
+        typeof(Program),
+        ApplicationAssembly.Type())
+    .AddTransient<LoggingMiddleware>()
+    .AddTransient<ExceptionMiddleware>();
+
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SetUpSwaggerDefinition("asp.Microservice API");
+});
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+app.UseMiddleware<ExceptionMiddleware>();
+app.UseMiddleware<LoggingMiddleware>();
+
+app.UseSwagger();
+app.UseSwaggerUI();
+app.MapHealthChecks("/health", new HealthCheckJsonResponseOptions());
+
+if (!app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseHsts();
 }
 
 app.UseHttpsRedirection();
