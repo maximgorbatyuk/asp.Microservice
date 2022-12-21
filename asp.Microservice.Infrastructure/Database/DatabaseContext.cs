@@ -7,7 +7,7 @@ namespace asp.Microservice.Infrastructure.Database;
 
 public class DatabaseContext : DbContext, IDatabaseContext
 {
-    public DbSet<User> Users { get; set; }
+    public DbSet<User> Users { get; set; } = null!;
 
     public DatabaseContext(
         DbContextOptions<DatabaseContext> options)

@@ -1,0 +1,86 @@
+version: "3.9"
+
+volumes:
+  prometheus_data: {}
+  grafana_data: {}
+
+networks:
+  cbpay_merchant:
+    driver: bridge
+
+services:
+  cbPay_MerchantApi:
+    container_name: merchant.Api
+    image: merchant_service_api:test_0
+    build:
+      context: .
+      dockerfile: cleverbridge.Pay.Merchant.Api/Dockerfile
+    environment:
+      ASPNETCORE_URLS: "http://+:80"
+      ASPNETCORE_ENVIRONMENT: "Development"
+      EXECUTED_IN_DOCKER: "true"
+      ConnectionStrings__Database: "User ID=postgres;Password=${POSTGRES_PASSWORD};Host=merchant.service.db;Port=5432;Database=merchant-service-api;Timeout=10;Pooling=true;"
+    ports:
+      - "7288:80"
+    networks:
+      - cbpay_merchant
+    depends_on:
+      - merchant.db
+
+  merchant.db:
+    image: postgres:latest
+    container_name: merchant.service.db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: merchant-service-api
+      POSTGRES_ADMIN_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    networks:
+      - cbpay_merchant
+
+  cache.server:
+    image: 'redis:7.0-alpine'
+    container_name: cbPay_merchant_cacheServer
+    ports:
+      - "6380:6379"
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - cbpay_merchant
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: cbPay_merchant_prometheus
+    restart: always
+    ports:
+      - "9091:9091"
+    volumes:
+      - ./Metrics/Prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    networks:
+      - cbpay_merchant
+    depends_on:
+      - cbPay_MerchantApi
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: cbPay_merchant_grafana
+    restart: always
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD}
+      - GF_USERS_ALLOW_SIGN_UP=false
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./Metrics/Grafana/provisioning:/etc/grafana/provisioning
+      - grafana_data:/var/lib/grafana
+    networks:
+      - cbpay_merchant
+    depends_on:
+      - prometheus

@@ -1,4 +1,4 @@
-namespace asp.Microservice;
+﻿namespace asp.Microservice;
 
 public record WeatherForecast
 {

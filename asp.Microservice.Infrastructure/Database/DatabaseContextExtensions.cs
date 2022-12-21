@@ -40,12 +40,12 @@ public static class DatabaseContextExtensions
     {
         var converter = new ValueConverter<T, string>(
             v => JsonSerializer.Serialize(v, _jsonSerializerOptions),
-            v => JsonSerializer.Deserialize<T>(v, _jsonSerializerOptions)!);
+            v => JsonSerializer.Deserialize<T>(v, _jsonSerializerOptions) !);
 
         var comparer = new ValueComparer<T>(
             (l, r) => JsonSerializer.Serialize(l, _jsonSerializerOptions) == JsonSerializer.Serialize(r, _jsonSerializerOptions),
             v => v == null ? 0 : JsonSerializer.Serialize(v, _jsonSerializerOptions).GetHashCode(),
-            v => JsonSerializer.Deserialize<T>(JsonSerializer.Serialize(v, _jsonSerializerOptions), _jsonSerializerOptions)!);
+            v => JsonSerializer.Deserialize<T>(JsonSerializer.Serialize(v, _jsonSerializerOptions), _jsonSerializerOptions) !);
 
         propertyBuilder.HasConversion(converter);
         propertyBuilder.Metadata.SetValueConverter(converter);
