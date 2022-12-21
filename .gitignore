@@ -1,0 +1,152 @@
+#Ignore thumbnails created by Windows
+Thumbs.db
+#Ignore files built by Visual Studio
+*.obj
+*.exe
+*.pdb
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.log
+[Bb]in
+[Dd]ebug*/
+*.lib
+*.sbr
+obj/
+[Rr]elease*/
+_ReSharper*/
+[Tt]est[Rr]esult*
+.vs/
+
+#Nuget packages folder
+packages/
+.[Rr]epository/
+
+#Certificates
+*.pem
+
+#RimageController
+!BackEnd/cleverbridge.BackEnd.RimageController/*.dll
+!BackEnd/cleverbridge.BackEnd.RimageController/*.lib
+
+#ecommerce
+[Aa]rtifacts/
+[Tt]emp/
+/BackEnd/api-fake/
+
+# resharper user specific settings
+*.sln.DotSettings.user
+
+#generated config files
+/**/cleverbridge.*/*Config*/backend-*.config
+/**/cleverbridge.*/*Config*/Development.config
+/**/cleverbridge.*/*Config*/DevProd.config
+/**/cleverbridge.*/*Config*/graphql*.config
+/**/cleverbridge.*/*Config*/Integration.config
+/**/cleverbridge.*/*Config*/online.config
+/**/cleverbridge.*/*Config*/Sandbox.config
+/**/cleverbridge.*/*Config*/Test.config
+/**/cleverbridge.*/*Config*/cgn*-dapo*.config
+/**/cleverbridge.*/*config*/cgnwel.config
+/**/cleverbridge.*/*config*/dusids.config
+/**/cleverbridge.*/*config*/cgnwel-*.config
+/**/cleverbridge.*/*config*/dusids-*.config
+
+!BackEnd/cleverbridge.BackEnd.Web.API/APIConfig/REST/**/
+!BackEnd/cleverbridge.BackEnd.Web.API/APIConfig/SOAP/**/
+
+/BackEnd/cleverbridge.BackEnd/AdditionalFiles/GeoIP/
+/Pci/cleverbridge.Cube.Processing/NLogConfigs/cube-dev.config
+whitemarlin*.config
+blackmarlin*.config
+redmarlin*.config
+fillmore*.config
+llama*.config
+keygen*.config
+OnlineChicago.config
+app[0-9]?.config
+cube-prod*.config
+web[0-9]?.config
+web.bak.config
+xslt[0-9]?.config
+crypto[0-9]?.config
+/Pci/cleverbridge.*.*/*Config*/OnlineChicago.config
+/Common/Build/.vscode/launch.json
+/tools/nuget.exe
+/Common/Build/.vscode/
+.p4ignore.txt
+/deploy_main.sql
+/check_scripts.cmd
+/BackEnd/.axoCover
+oidcConfig.json
+All.sln
+/**/Web.bak.config
+
+### build and release management ###
+# Exclude packaged modules
+*.zip
+
+# Exclude .NET assemblies from source
+*.dll
+
+### VisualStudioCode ###
+**/.vscode/*
+!**/.vscode/settings.json
+omnisharp.json
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+
+#Certificates
+*.pem
+*.pfx
+!mycert.pfx
+
+#build
+!nuget.exe
+!wget.exe
+!chromedriver.exe
+!BackEnd/cleverbridge.BackEnd/AdditionalFiles/c[Kk]onto/c[Kk]onto.exe
+_cleanAndBuild.bat
+
+#Temp
+*.log
+packages.config
+*.bak
+**/temp/download_*.txt
+**/Jenkins/userContent/deployment/Development-Development-*.html
+**/Tobi/
+/brm/Jenkins/groovy/groovyscripts.jar
+/brm/.temp/**
+
+**/MigrationBackup/
+/BackEnd/Obfuscation/
+
+**/__pycache__/*
+
+# GraphiQL 
+/BackEnd/graphiql/node_modules/
+/BackEnd/graphiql/build/
+/BackEnd/graphiql/package-lock.json
+
+# code analysis temp files
+/.sonarqube/**
+
+# JetBrains IDEs
+.idea/
+
+#ncrunch
+*.ncrunchproject
+*.ncrunchsolution
+*.env

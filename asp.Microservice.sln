@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "asp.Microservice", "asp.Microservice\asp.Microservice.csproj", "{BFC17AFA-09D9-49CB-976E-77D8DADAA68E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "asp.Microservice.Domain", "asp.Microservice.Domain\asp.Microservice.Domain.csproj", "{F5EFC326-A897-4722-8F0F-36C00CFCEFAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "asp.Microservice.Application", "asp.Microservice.Application\asp.Microservice.Application.csproj", "{511E60D3-7E21-4695-AD0B-8E6D02656325}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "asp.Microservice.Infrastructure", "asp.Microservice.Infrastructure\asp.Microservice.Infrastructure.csproj", "{35FB625D-3DC3-4893-BC8A-B93DFDD6F87F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{6E9274F6-A288-4238-AE2C-4903096DA217}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BFC17AFA-09D9-49CB-976E-77D8DADAA68E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFC17AFA-09D9-49CB-976E-77D8DADAA68E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFC17AFA-09D9-49CB-976E-77D8DADAA68E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFC17AFA-09D9-49CB-976E-77D8DADAA68E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5EFC326-A897-4722-8F0F-36C00CFCEFAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5EFC326-A897-4722-8F0F-36C00CFCEFAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5EFC326-A897-4722-8F0F-36C00CFCEFAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5EFC326-A897-4722-8F0F-36C00CFCEFAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{511E60D3-7E21-4695-AD0B-8E6D02656325}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{511E60D3-7E21-4695-AD0B-8E6D02656325}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{511E60D3-7E21-4695-AD0B-8E6D02656325}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{511E60D3-7E21-4695-AD0B-8E6D02656325}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35FB625D-3DC3-4893-BC8A-B93DFDD6F87F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35FB625D-3DC3-4893-BC8A-B93DFDD6F87F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35FB625D-3DC3-4893-BC8A-B93DFDD6F87F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35FB625D-3DC3-4893-BC8A-B93DFDD6F87F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
