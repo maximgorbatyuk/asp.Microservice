@@ -11,6 +11,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{6E9274F6-A288-4238-AE2C-4903096DA217}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		docker-compose.yaml = docker-compose.yaml
+		global.json = global.json
+		README.md = README.md
+		standard.ruleset = standard.ruleset
+		stylecop.json = stylecop.json
 	EndProjectSection
 EndProject
 Global

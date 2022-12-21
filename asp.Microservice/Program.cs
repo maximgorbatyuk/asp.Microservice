@@ -37,7 +37,8 @@ public class Program
                 typeof(Program),
                 ApplicationAssembly.Type())
             .AddTransient<LoggingMiddleware>()
-            .AddTransient<ExceptionMiddleware>();
+            .AddTransient<ExceptionMiddleware>()
+            .AddAppHealthChecks();
 
         builder.Services.AddSwaggerGen(options =>
         {
